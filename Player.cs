@@ -31,9 +31,6 @@ namespace DungeonExplorer
 
             private set
             {
-                if (_Health == 100)
-                    Console.WriteLine($"{_Name} is at full health");
-                else
                     _Health = value;
             }
         }
@@ -51,16 +48,10 @@ namespace DungeonExplorer
         }
         public string InventoryContents()
         {
+
             return string.Join(", ", inventory);
         }
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Please enter your Name");
-            String usersName = Console.ReadLine();
-            Player player = new Player(usersName,100);
-
-
-        }
+        
     }
 }
