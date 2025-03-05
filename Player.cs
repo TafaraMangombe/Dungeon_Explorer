@@ -34,9 +34,7 @@ namespace DungeonExplorer
                     _Health = value;
             }
         }
-            
-          
-    
+
         public Player(string name, int health) 
         {
             this.Name = name;
