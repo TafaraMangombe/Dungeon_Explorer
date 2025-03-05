@@ -3,6 +3,43 @@ using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
+    public class Item
+
+    {
+        public string _itemName;
+        public string _itemDescription;
+
+        public string ItemName
+        {
+            get
+            {
+                return _itemName;
+            }
+
+            private set
+            {
+                _itemName = value;
+            }
+        }
+        public string Itemdescription
+        {
+            get
+            {
+                return _itemDescription;
+            }
+
+            private set
+            {
+                _itemDescription = value;
+            }
+        }
+
+        public Item(string itemName, string itemDescription)
+        {
+            this.ItemName = itemName;
+            this.Itemdescription = itemDescription;
+        }
+    }
     public class Player
 
     {
@@ -40,9 +77,14 @@ namespace DungeonExplorer
             this.Name = name;
             this.Health = health;
         }
+
+        
+            
+
         public void PickUpItem(string item)
         {
-          
+            inventory.Add(item);
+            
         }
         public string InventoryContents()
         {
@@ -52,4 +94,5 @@ namespace DungeonExplorer
 
         
     }
+    
 }
