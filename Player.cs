@@ -45,7 +45,7 @@ namespace DungeonExplorer
     {
         public string _Name;
         public int _Health = 100;
-        private List<string> inventory = new List<string>();
+        private List<Item> _Inventory = new List<Item>();
 
         public string Name 
         { 
@@ -68,28 +68,41 @@ namespace DungeonExplorer
 
             private set
             {
-                    _Health = value;
+                 _Health = value;
             }
         }
+        public List<Item> Inventory
+        {
+            get
+            {
+                return _Inventory;
+            }
 
-        public Player(string name, int health) 
+            private set
+            {
+                _Inventory = value;
+            }
+        }
+        public Player(string name, int health, List<Item> inventory) 
         {
             this.Name = name;
             this.Health = health;
+            this.Inventory = inventory;
         }
 
-        
+       
             
 
-        public void PickUpItem(string item)
+        public void PickUpItem(Item item)
         {
-            inventory.Add(item);
+            _Inventory.Add(item);
             
         }
         public string InventoryContents()
         {
-
-            return string.Join(", ", inventory);
+           
+            return string.Join(", ", _Inventory);
+          
         }
 
         

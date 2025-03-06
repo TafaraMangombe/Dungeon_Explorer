@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Media;
 
 namespace DungeonExplorer
@@ -11,7 +13,12 @@ namespace DungeonExplorer
         public Game()
         {
             // Initialize the game with one room and one player
-
+            Console.Write("Please enter your name: ");
+            String usersName = Console.ReadLine(); ;
+            this.player = new Player(usersName, 100,new List<Item>());
+            this.currentRoom = new Room("You wake up in a dark and damp room only lit up by lanterns haning from the ceiling." +
+                    $" \n Vines and branches cover the walls of this unfamiliar location and the sounds of water drops echo." +
+                    $"\n A rusty dagger is sitting in front of you");
         }
         public void Start()
         {
@@ -19,28 +26,22 @@ namespace DungeonExplorer
             bool playing = true;
             while (playing)
             {
-                Console.WriteLine("Welcome to Dungeon Explorer.");
-                Console.Write("Please enter your name: ");
-                String usersName = Console.ReadLine(); ;
-                Player player = new Player(usersName, 100);
                 Item dagger = new Item("Dagger", "a rusty old weapon");
-                Room firstRoom = new Room("You wake up in a dark and damp room only lit up by lanterns haning from the ceiling." +
-                    $" \n Vines and branches cover the walls of this unfamiliar location and the sounds of water drops echo." +
-                    $"\n A rusty dagger is sitting in front of you");
                 Console.WriteLine("Would you Like to Check:" +
-                 " \n-Health \n-Inventory \n-Items \n-Description");
+                 " \n-Health \n-Inventory \n-Items \n-Description \n-'Next' Room");
                 while (true)
                 {
                     string action = Console.ReadLine().ToLower();
 
                     if (action == "health")
                     {
-                        Console.WriteLine($"{usersName} your health is currently at {player.Health}/100");
-                        break;
+                        Console.WriteLine($"{player.Name} your health is currently at {player.Health}/100");
+                        Start();
                     }
                     else if (action == "inventory")
                     {
-                        break;
+                        Console.WriteLine(player.InventoryContents());
+                        Start();
                     }
                     else if (action == "items")
                     {
@@ -50,22 +51,27 @@ namespace DungeonExplorer
                             string itemsAction = Console.ReadLine().ToLower();
                             if (itemsAction == "yes")
                             {
-                                player.PickUpItem(Convert.ToString(dagger));
+                                player.PickUpItem(dagger);
                                 Console.WriteLine("This item has been added to your inventory");
-                                break;
+                                Start();
                             }
                             else
                             {
                                 Console.WriteLine("that was not 'yes'.");
                             }
                         }
-                        break;
+                        
                     }
                     else if (action == "description")
 
                     {
-                        Console.WriteLine(firstRoom.GetDescription());
-                        break;
+                        Console.WriteLine(currentRoom.GetDescription());
+                        Start();
+                    }
+                    else if(action == "next")
+                    {
+                        Console.WriteLine("Currently you can not leave this room");
+                        Start();
                     }
                     else
                     {
