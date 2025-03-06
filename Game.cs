@@ -19,7 +19,7 @@ namespace DungeonExplorer
             this.currentRoom = new Room($"{usersName} you have woken up in a dark and damp room only lit up by lanterns hanging from the ceiling." +
                 $"\nVines and branches cover the walls of this unfamiliar location, and the sound of water drops echo." +
                 $"\nPiles of bones and pools of bloods filled the room with the smell of death and countless amounts of " +
-                $"\ndestroyed and shattered weapons filled the room with only a rusty dagger in intact. ");
+                $"\ndestroyed and shattered weapons filled the room with only a rusty dagger in intact.");
         }
         public void Start()
         {
