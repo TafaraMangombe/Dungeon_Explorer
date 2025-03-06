@@ -16,9 +16,10 @@ namespace DungeonExplorer
             Console.Write("Please enter your name: ");
             String usersName = Console.ReadLine(); ;
             this.player = new Player(usersName, 100,new List<Item>());
-            this.currentRoom = new Room("You wake up in a dark and damp room only lit up by lanterns haning from the ceiling." +
-                    $" \n Vines and branches cover the walls of this unfamiliar location and the sounds of water drops echo." +
-                    $"\n A rusty dagger is sitting in front of you");
+            this.currentRoom = new Room($"{usersName} you have woken up in a dark and damp room only lit up by lanterns hanging from the ceiling." +
+                $"\nVines and branches cover the walls of this unfamiliar location, and the sound of water drops echo." +
+                $"\nPiles of bones and pools of bloods filled the room with the smell of death and countless amounts of " +
+                $"\ndestroyed and shattered weapons filled the room with only a rusty dagger in intact. ");
         }
         public void Start()
         {
